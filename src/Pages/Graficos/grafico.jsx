@@ -8,12 +8,21 @@ import ModaCasa from '../../image/ModosTemas/ModoClaro/IconesMonitoramento/ModaC
 import Grill from '../../image/ModosTemas/ModoClaro/IconesMonitoramento/Grill.svg'; 
 import Footer from '../../components/Footer/footer.jsx';
 import LayoutGraphic from '../../components/Chart/Layout.jsx';
+import BarChartMobileDark from '../../components/Chart/BarChartMobileDark.jsx';
 import BarChartMobile from '../../components/Chart/BarChartMobile.jsx';
 
 const Grafico = () => {
   const { t } = useTranslation();
   const [selectedDay, setSelectedDay] = useState(1);
   const [larguraTela, setLarguraTela] = useState(window.innerWidth);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Recupera o estado do modo escuro do localStorage
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    setDarkMode(isDarkMode);
+  }, []);
+
 
   // Função para atualizar a largura da tela
   const atualizarLargura = () => {
@@ -35,7 +44,7 @@ const Grafico = () => {
   return (
     <div className="bg-lightBackground dark:bg-darkBackground min-h-screen">
       <Navbar />
-      <div className="flex items-center w-full mb-6 mt-[90px]">
+      <div className="flex items-center w-full mb-6 mt-[70px]">
         <div className="flex-1 flex justify-end pr-2 sm:pr-4">
           <hr className="border-t border-gray-300 dark:border-gray-600" style={{ width: '10%' }} />
         </div>
@@ -86,9 +95,14 @@ const Grafico = () => {
             <p className="text-sm md:text-base font-medium mb-2 text-center text-lightText dark:text-darkText">
               {t('Gráfico Pessoas nas Filas x Horário')}
             </p>
-            <div className={`w-full ${tamanhoGrafico} h-auto object-cover flex justify-center , backgroundColor: '#ffffff' `}>
-              <BarChartMobile selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+            <div className={`w-full ${tamanhoGrafico} h-auto object-cover flex justify-center`}>
+              {darkMode ? (
+                <BarChartMobileDark selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+              ) : (
+                <BarChartMobile selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+              )}
             </div>
+
           </div>
         </div>
       </div>

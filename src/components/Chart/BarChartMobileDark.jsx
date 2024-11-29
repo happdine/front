@@ -21,7 +21,7 @@ ChartJS.register(
 
 function BarChart({ selectedDay, setSelectedDay }) {
   const chartRef = useRef(null);
-  const [darkMode, setDarkMode] = useState(false); // Simula o tema sem contexto
+  const [darkMode, setDarkMode] = useState(false); 
   const [chartWidth, setChartWidth] = useState('100%');
   const [chartHeight, setChartHeight] = useState(400);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -62,8 +62,8 @@ function BarChart({ selectedDay, setSelectedDay }) {
       if (ctx) {
         const gradientColors = realData.map(() => {
           const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-          gradient.addColorStop(0, darkMode ? '#3b3b3b' : '#7D8389');
-          gradient.addColorStop(1, darkMode ? '#1e1e1e' : '#2E3033');
+          gradient.addColorStop(0, darkMode ? '#B2B9C0' : '#B2B9C0');
+          gradient.addColorStop(1, darkMode ? '#E0E2E5' : '#E0E2E5');
           return gradient;
         });
 
@@ -125,24 +125,24 @@ function BarChart({ selectedDay, setSelectedDay }) {
       plugins: {
         legend: {
           labels: {
-            color: darkMode ? '#ffffff' : '#000000',
+            color: darkMode ? '#ffffff' : '#ffffff',
           },
         },
         tooltip: {
-          backgroundColor: darkMode ? '#333333' : '#ffffff',
-          titleColor: darkMode ? '#ffffff' : '#000000',
-          bodyColor: darkMode ? '#ffffff' : '#000000',
+          backgroundColor: darkMode ? '#ffffff' : '#ffffff',
+          titleColor: darkMode ? '#ffffff' : '#ffffff',
+          bodyColor: darkMode ? '#ffffff' : '#ffffff',
         },
       },
       scales: {
         x: {
           ticks: {
-            color: darkMode ? '#ffffff' : '#000000',
+            color: darkMode ? '#ffffff' : '#ffffff',
           },
         },
         y: {
           ticks: {
-            color: darkMode ? '#ffffff' : '#000000',
+            color: darkMode ? '#ffffff' : '#ffffff',
           },
         },
       },
@@ -193,7 +193,7 @@ function BarChart({ selectedDay, setSelectedDay }) {
               padding: isSmallScreen ? '3px 8px' : '10px 55px',
               cursor: 'pointer',
               backgroundColor: 'transparent',
-              color: '#333',
+              color: '#ffffff',
               fontWeight: 'normal',
               position: 'relative',
               fontSize: isSmallScreen ? '14px' : '16px',
@@ -203,7 +203,7 @@ function BarChart({ selectedDay, setSelectedDay }) {
             <span
               style={{
                 display: 'inline-block',
-                borderBottom: selectedDay === day.value ? '2px solid #333' : '2px solid transparent',
+                borderBottom: selectedDay === day.value ? '2px solid #ffffff' : '2px solid transparent',
                 width: '100%',
                 transition: 'border-bottom 0.3s ease',
               }}
